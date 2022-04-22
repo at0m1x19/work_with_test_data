@@ -5,7 +5,7 @@ books_list = []
 users_list = []
 needed_fields_of_user = ['name', 'gender', 'address', 'age']
 
-with open('books.csv', newline='') as file:
+with open('files/books.csv', newline='') as file:
     reader = DictReader(file)
 
     for row in reader:
@@ -13,7 +13,7 @@ with open('books.csv', newline='') as file:
         lowercase_keys_row = {key.lower(): value for key, value in row.items()}
         books_list.append(lowercase_keys_row)
 
-with open('users.json', newline='') as file:
+with open('files/users.json', newline='') as file:
     reader = load(file)
 
     for user in reader:
@@ -34,5 +34,5 @@ with open('users.json', newline='') as file:
     for book in books_list:
         next(endless_users_list)['books'].append(book)
 
-with open('result.json', 'w') as file:
+with open('files/result.json', 'w') as file:
     dump(users_list, file, indent=4)
